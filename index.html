@@ -4,9 +4,53 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="./assets/css/normalize.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    
+    <title>Traver's Weather Dashboard</title>
 </head>
 <body>
+    <header class="site-header" id="top" role="banner">
+        <div class="container-fluid">
+          <h1 class="logo" alt="Logo">
+            Live <span id="bold">Weather</span> Dashboard
+          </h1>
+        </div>
+        <div>
+            <h3 class="header-date" id="bold"></h3>
+        </div>
+      </header>
     
+    <main class="row container">
+        <!-- city selector sidebar and history field -->
+        <section class="col-4">
+            <div class="col-3">
+                <form class="col-2" action="sumbit">
+                    <input type="text" placeholder="Alabama">
+                    <button>Search Cities</button>
+                </form>
+            </div>
+            
+            <div class="col-3" id="cityHistory"></div>
+
+        <!-- weather status, current, 5-day forecast cards -->
+        </section class="container-fluid col-8">
+            <!-- Current weather card -->
+            <div class="row" id="currentWeather"></div>
+            <!-- 5-day forcast cards -->
+            <div id="5day"></div>
+            
+        <section>
+
+        </section>
+    </main>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="./script.js"></script>
 </body>
 </html>
