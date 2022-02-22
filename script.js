@@ -1,8 +1,14 @@
-var headerDate = $(".header-date")
+var headerDate = $(".header-date");
+var cardDate = $(".card-date");
 
+var todayDate = moment();
+// var weekDay = moment().weekDay();
 
-var todayDate = moment()
+function generateDates() {
+  $(headerDate).text(todayDate.format("MMMM Do, YYYY"));
+  // var idToDay = cardDate.attr("id").val();
+  // var forcastDate = weekDay + idToDay;
+  // var cardDay = moment().weekDay(forcastDate);
+}
 
-
-
-$(headerDate).text(todayDate.format("MMMM Do, YYYY"))
+generateDates();
