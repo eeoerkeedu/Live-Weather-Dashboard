@@ -1,8 +1,5 @@
 var headerDate = $(".header-date");
 var cardDate = $(".card-date");
-var cityInput = "tokyo";
-var cityLat = 0;
-var cityLon = 0;
 var cityName = document.getElementById("cityname");
 var todayIcon = $("#todayIcon");
 var icons = $(".icon");
@@ -11,10 +8,21 @@ var todayWind = document.getElementById("todayWind");
 var todayHumid = document.getElementById("todayHumid");
 var todayUV = document.getElementById("todayUV");
 var currentWeather = $("#currentWeather");
+
 var todayDate = moment();
 var iconData = 0;
-
+var cityInput = "";
+var cityLat = 0;
+var cityLon = 0;
 var fiveDay = [1, 2, 3, 4, 5];
+
+function handleCityInput() {
+  var searchFieldInput = $("#cityinputfield");
+  cityInput = searchFieldInput.val();
+  console.log(searchFieldInput);
+
+  citySearchApply();
+}
 
 function citySearchApply() {
   icons.removeClass("d-none");
@@ -59,7 +67,7 @@ function citySearchApply() {
           var uvToday = data["current"].uvi;
 
           todayIcon.attr("src", iconGen);
-          todayTemp.textContent = "Tempurature: " + tempToday + "  degrees F";
+          todayTemp.textContent = "Tempurature: " + tempToday + "° F";
           todayWind.textContent = "Wind Speed: " + windToday + "  mph";
           todayHumid.textContent = "Humidity: " + humidToday + "  %";
           todayUV.textContent = "UV Index: " + uvToday;
@@ -71,6 +79,25 @@ function citySearchApply() {
           } else {
             todayUV.style = "background: green";
           }
+
+          fiveDay.forEach(function (forecast) {
+            var daySet = forecast - 1;
+            var iconData = data.daily[daySet].weather[0].icon;
+            var iconGen =
+              "http://openweathermap.org/img/w/" + iconData + ".png";
+            var forecastIcons = $("#" + forecast + "Icon");
+            var forecastTemps = $("#" + forecast + "Temp");
+            var forecastWinds = $("#" + forecast + "Wind");
+            var forecastHumid = $("#" + forecast + "Humid");
+            var temps = data.daily[daySet].temp["day"];
+            var winds = data.daily[daySet].wind_speed;
+            var humidPerc = data.daily[daySet].humidity;
+
+            forecastIcons.attr("src", iconGen);
+            forecastTemps.text("Temp: " + temps + "° F");
+            forecastWinds.text("Winds: " + winds + "mph");
+            forecastHumid.text("Humidity: " + humidPerc + "%");
+          });
         });
     });
 }
@@ -79,13 +106,18 @@ function generateDates() {
   $(headerDate).text(todayDate.format("MMMM Do, YYYY"));
 
   fiveDay.forEach(function (setDates) {
-    var dayId = setDates;
     var futureDate = moment().add(setDates, "days").format("MM-DD-YY");
 
     document.getElementById("date" + setDates).textContent = futureDate;
   });
 }
 
-generateDates();
+function init() {
+  cityInput = "Alabama";
+  generateDates();
+  citySearchApply();
+}
 
-$("#citiessearch").on("click", citySearchApply);
+init();
+
+$("#citiessearch").on("click", handleCityInput);

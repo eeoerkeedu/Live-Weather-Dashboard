@@ -59,4 +59,5 @@ main {
 .fivedaycard {
   background-color: aliceblue;
   list-style: none;
+  font-size: small;
 }
