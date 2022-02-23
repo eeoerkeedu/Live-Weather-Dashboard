@@ -37,7 +37,7 @@ function handleCityInput() {
 // 5 day forecast cards.
 function citySearchApply() {
   fetch(
-    "http://api.openweathermap.org/geo/1.0/direct?q=" +
+    "https://api.openweathermap.org/geo/1.0/direct?q=" +
       cityInput +
       ",&limit=1&appid=8ea0860b7dd06d7fe2a61e0180fed681",
     {
@@ -69,7 +69,7 @@ function citySearchApply() {
         })
         .then(function (data) {
           var iconData = data["current"].weather[0].icon;
-          var iconGen = "http://openweathermap.org/img/w/" + iconData + ".png";
+          var iconGen = "https://openweathermap.org/img/w/" + iconData + ".png";
           var tempToday = data["current"].temp;
           var windToday = data["current"].wind_speed;
           var humidToday = data["current"].humidity;
@@ -93,7 +93,7 @@ function citySearchApply() {
             var daySet = forecast - 1;
             var iconData = data.daily[daySet].weather[0].icon;
             var iconGen =
-              "http://openweathermap.org/img/w/" + iconData + ".png";
+              "https://openweathermap.org/img/w/" + iconData + ".png";
             var forecastIcons = $("#" + forecast + "Icon");
             var forecastTemps = $("#" + forecast + "Temp");
             var forecastWinds = $("#" + forecast + "Wind");
