@@ -8,6 +8,7 @@ var todayWind = document.getElementById("todayWind");
 var todayHumid = document.getElementById("todayHumid");
 var todayUV = document.getElementById("todayUV");
 var currentWeather = $("#currentWeather");
+var searchFieldInput = $("#cityinputfield");
 
 var todayDate = moment();
 var iconData = 0;
@@ -15,13 +16,15 @@ var cityInput = "";
 var cityLat = 0;
 var cityLon = 0;
 var fiveDay = [1, 2, 3, 4, 5];
+var searchHistory = [];
 
 function handleCityInput() {
-  var searchFieldInput = $("#cityinputfield");
-  cityInput = searchFieldInput.val();
-  console.log(searchFieldInput);
+  cityInput = $(searchFieldInput).val();
 
+  searchHistory.push(cityInput);
+  handleHistoryGen();
   citySearchApply();
+  handleHistoryStore();
 }
 
 function citySearchApply() {
@@ -110,6 +113,28 @@ function generateDates() {
 
     document.getElementById("date" + setDates).textContent = futureDate;
   });
+}
+
+// if statement deletes old lines
+function handleHistoryGen() {
+  $("#cityHistory").empty();
+  if (searchHistory.length > 5) {
+    searchHistory.shift();
+  }
+  searchHistory.forEach(function (saveHistory) {
+    var historyList = $("#cityHistory");
+    var historyLine = $("<li>");
+    var historyButton = $("<button>");
+    var historyInput = saveHistory;
+
+    historyButton.text(historyInput);
+    historyLine.append(historyButton);
+    historyList.append(historyLine);
+  });
+}
+
+function handleHistoryStore() {
+  localStorage.setItem("cityHistory", JSON.stringify(searchHistory));
 }
 
 function init() {
