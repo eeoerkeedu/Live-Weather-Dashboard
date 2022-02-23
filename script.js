@@ -25,6 +25,7 @@ function handleCityInput() {
   citySearchApply();
   handleHistoryStore();
   handleHistoryGen();
+  searchFieldInput.val("");
 }
 
 function citySearchApply() {
@@ -145,18 +146,17 @@ function handleHistoryStore() {
 function handleHistoryDisplay() {
   var savedCities = JSON.parse(localStorage.getItem("cityHistory"));
 
-  if (searchHistory === null) {
-    cityInput = "Alabama";
-  } else {
+  if (savedCities !== null) {
     searchHistory = savedCities;
-    cityInput = searchHistory[-1];
   }
 }
 
 function init() {
+  cityInput = "Denver";
   generateDates();
   handleHistoryDisplay();
   citySearchApply();
+  handleHistoryGen();
 }
 
 init();
