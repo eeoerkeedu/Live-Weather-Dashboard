@@ -22,14 +22,12 @@ function handleCityInput() {
   cityInput = $(searchFieldInput).val();
 
   searchHistory.push(cityInput);
-  handleHistoryGen();
   citySearchApply();
   handleHistoryStore();
+  handleHistoryGen();
 }
 
 function citySearchApply() {
-  icons.removeClass("d-none");
-
   fetch(
     "http://api.openweathermap.org/geo/1.0/direct?q=" +
       cityInput +
@@ -115,7 +113,6 @@ function generateDates() {
   });
 }
 
-// if statement deletes old lines
 function handleHistoryGen() {
   $("#cityHistory").empty();
   if (searchHistory.length > 5) {
@@ -128,21 +125,42 @@ function handleHistoryGen() {
     var historyInput = saveHistory;
 
     historyButton.text(historyInput);
+    historyButton.addClass("historybtn");
     historyLine.append(historyButton);
     historyList.append(historyLine);
   });
+}
+
+function useHistory(event) {
+  element = event.target;
+  var btnText = element.textContent;
+  cityInput = btnText;
+  citySearchApply();
 }
 
 function handleHistoryStore() {
   localStorage.setItem("cityHistory", JSON.stringify(searchHistory));
 }
 
+function handleHistoryDisplay() {
+  var savedCities = JSON.parse(localStorage.getItem("cityHistory"));
+
+  if (searchHistory === null) {
+    cityInput = "Alabama";
+  } else {
+    searchHistory = savedCities;
+    cityInput = searchHistory[-1];
+  }
+}
+
 function init() {
-  cityInput = "Alabama";
   generateDates();
+  handleHistoryDisplay();
   citySearchApply();
 }
 
 init();
 
 $("#citiessearch").on("click", handleCityInput);
+
+$(".historybtn").on("click", useHistory);
