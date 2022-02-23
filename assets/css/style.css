@@ -1,27 +1,46 @@
+/* setting over all formatting and allowing header space to scroll */
 body {
   font-family: Arial, Helvetica, sans-serif;
   background-color: darkslategrey;
   padding-top: 77px;
 }
 
+/* more padding for header */
 main {
   padding-top: 8em;
 }
 
-.container-fluid {
-  max-width: 1200px;
+/* button formatting */
+button {
+  color: whitesmoke;
+  background-color: darkslategrey;
+  border: solid 0.2em whitesmoke;
+  margin: 1%;
+  padding: 2%;
+  border-radius: 15px;
 }
 
-.wrap-inner {
-  margin-left: auto;
-  margin-right: auto;
+/* button targeting formatting */
+button:hover,
+button:focus {
+  background-color: whitesmoke;
+  border-color: #3b3b3b;
+  color: darkslategrey;
+  text-decoration: none;
 }
 
+/* setting all ul's on page to lose lsit style */
+ul {
+  list-style: none;
+}
+
+/* sets some formatting for the h1 logo */
 .site-header .logo {
-  width: 30%;
+  width: 40%;
   height: auto;
 }
 
+/* sets location of todays date in the header */
 .site-header .header-date {
   padding-left: 0;
   text-align: center;
@@ -31,6 +50,7 @@ main {
   display: block;
 }
 
+/* formats the site header */
 .site-header {
   position: fixed;
   z-index: 999;
@@ -40,24 +60,25 @@ main {
   color: darkslategrey;
 }
 
+/* formats the callout word in the "logo" */
 #bold {
   font-weight: bolder;
 }
 
-.full-width {
-  width: 100%;
-  height: auto;
-}
-
+/* formats the current weather list */
 #currentWeather {
   background-color: aliceblue;
   list-style: none;
   padding: 2%;
   margin: 1%;
+  height: 75%;
 }
 
+/* formats the 5 day forecast cards */
 .fivedaycard {
   background-color: aliceblue;
   list-style: none;
   font-size: small;
+  margin-left: 5%;
+  min-height: 200px;
 }

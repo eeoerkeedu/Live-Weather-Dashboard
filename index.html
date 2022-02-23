@@ -4,18 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- link for bootstrap -->
     <link
     rel="stylesheet"
     href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     />
+    <!-- link ofr css normalization -->
     <link rel="stylesheet" href="./assets/css/normalize.css" />
+    <!--  link for custom css -->
     <link rel="stylesheet" href="./assets/css/style.css" />
-    
+    <!-- tab title and favicon added -->
     <title>Traver's Weather Dashboard</title>
+    <link rel="shortcut icon" type="image/jpg" href="./assets/10d@2x.png" />
 </head>
 <body>
     <header class="site-header" id="top" role="banner">
-        <div class="container-fluid">
+        <div class="container">
         <h1 class="logo" alt="Logo">
             Live <span id="bold">Weather</span> Dashboard
         </h1>
@@ -27,15 +31,15 @@
     
     <main class="row">
         <!-- city selector sidebar and history field -->
-        <section class="col-4 border-right border-3 border-light">
-            <div class="col-3">
-                <div class="col-2">
+        <section class="col-4 border-right border-3 border-light justify-content-around">
+            <div class="col-12">
+                <div class="col-12">
                     <input id="cityinputfield" type="text" placeholder="Enter City">
                     <button id="citiessearch">Search Cities</button>
                 </div>
             </div>
             
-            <div class="col-3" id="cityHistoryBox">
+            <div class="col-12" id="cityHistoryBox">
                 <ul id="cityHistory"></ul>
             </div>
 
@@ -54,6 +58,9 @@
             </div>
             <!-- 5-day forcast cards -->
         <section class="row col-12 justify-content-around my-2 border-top border-light p-3" id="5day">
+            <h2 class="row text-light align-self-start justify-content-center">5-Day Forecast</h2>
+            <div class="row col-12 justify-content-around my-1">
+            <!-- tomorrow -->
             <div class="col-8 col-lg-2 mb-3 p-1">
                 <ul id="1" class="card fivedaycard">
                     <li style="font-weight:bold;" id="date1"></li>
@@ -63,7 +70,7 @@
                     <li id="1Humid"></li>
                 </ul>
             </div>
-            
+            <!-- 2 days from today -->
             <div class="col-8 col-lg-2 mb-3 p-1">
                 <ul id="2" class="card fivedaycard">
                     <li style="font-weight:bold;" id="date2"></li>
@@ -73,7 +80,7 @@
                     <li id="2Humid"></li>
                 </ul>
             </div>
-
+            <!-- 3 days from today -->
             <div class="col-8 col-lg-2 mb-3 p-1">
                 <ul id="3" class="card fivedaycard">
                     <li style="font-weight:bold;" id="date3"></li>
@@ -83,7 +90,7 @@
                     <li id="3Humid"></li>
                 </ul>
             </div>
-            
+            <!-- 4 days from today -->
             <div class="col-8 col-lg-2 mb-3 p-1">
                 <ul id="4" class="card fivedaycard">
                     <li style="font-weight:bold;" id="date4"></li>
@@ -93,7 +100,7 @@
                     <li id="4Humid"></li>
                 </ul>
             </div>
-
+            <!-- 5 days from today -->
             <div class="col-8 col-lg-2 mb-3 p-1">
                 <ul id="5" class="card fivedaycard">
                     <li style="font-weight:bold;" id="date5"></li>
@@ -103,7 +110,7 @@
                     <li id="5Humid"></li>
                 </ul>
             </div>
-
+        </div>
         </section>
             
         <section>
@@ -111,8 +118,11 @@
         </section>
     </main>
     
+    <!-- script for jquery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- script for moment js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <!-- custom script -->
     <script src="./script.js"></script>
 </body>
 </html>

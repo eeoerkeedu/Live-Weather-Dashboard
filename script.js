@@ -1,3 +1,4 @@
+// establishes variables on on page elements
 var headerDate = $(".header-date");
 var cardDate = $(".card-date");
 var cityName = document.getElementById("cityname");
@@ -10,6 +11,7 @@ var todayUV = document.getElementById("todayUV");
 var currentWeather = $("#currentWeather");
 var searchFieldInput = $("#cityinputfield");
 
+// establishes variables of objects and arrays to be used through the page
 var todayDate = moment();
 var iconData = 0;
 var cityInput = "";
@@ -18,16 +20,21 @@ var cityLon = 0;
 var fiveDay = [1, 2, 3, 4, 5];
 var searchHistory = [];
 
+// applies user input to the funtions of the page, adds user search input to history list clears field after funtions complete
 function handleCityInput() {
   cityInput = $(searchFieldInput).val();
 
-  searchHistory.push(cityInput);
+  searchHistory.unshift(cityInput);
   citySearchApply();
   handleHistoryStore();
   handleHistoryGen();
   searchFieldInput.val("");
 }
 
+// main function of the page, fetches the geolocation data compared to the user's input,
+// then uses the location data to fetch the correct weather for the user input,
+// finally pushes the relevant data and links to the current weather list and the
+// 5 day forecast cards.
 function citySearchApply() {
   fetch(
     "http://api.openweathermap.org/geo/1.0/direct?q=" +
@@ -104,6 +111,7 @@ function citySearchApply() {
     });
 }
 
+//sets the date fields on the header, current weather field, and the 5 day forecast cards
 function generateDates() {
   $(headerDate).text(todayDate.format("MMMM Do, YYYY"));
 
@@ -114,10 +122,13 @@ function generateDates() {
   });
 }
 
+// creates il's with buttons for each user input and generates the list after each search
+// input, also removes history entries if the array is over 5 items, also establishes the
+// button functions to que the page to respond if a previous search's button is pressed.
 function handleHistoryGen() {
   $("#cityHistory").empty();
   if (searchHistory.length > 5) {
-    searchHistory.shift();
+    searchHistory.pop();
   }
   searchHistory.forEach(function (saveHistory) {
     var historyList = $("#cityHistory");
@@ -130,37 +141,46 @@ function handleHistoryGen() {
     historyLine.append(historyButton);
     historyList.append(historyLine);
   });
+  $(".historybtn").on("click", useHistory);
 }
 
+//applys the history button's text as the city input for the weather search
 function useHistory(event) {
+  event.preventDefault();
   element = event.target;
   var btnText = element.textContent;
   cityInput = btnText;
   citySearchApply();
 }
 
+// handles the local storage of the array of user input history
 function handleHistoryStore() {
   localStorage.setItem("cityHistory", JSON.stringify(searchHistory));
 }
 
+// handles the reproduction of the history list on page load, presenting a default if there is no history
 function handleHistoryDisplay() {
   var savedCities = JSON.parse(localStorage.getItem("cityHistory"));
 
   if (savedCities !== null) {
     searchHistory = savedCities;
+    cityInput = searchHistory[0];
+  } else {
+    cityInput = "Denver";
   }
 }
 
+//runs a set of funtions on page load to give the user an easier time navigating the page.
 function init() {
-  cityInput = "Denver";
   generateDates();
   handleHistoryDisplay();
+
   citySearchApply();
   handleHistoryGen();
 }
 
+// runs the ini function on page load
 init();
 
+// sets the serach cities button to activate the sever functions within handle City Input
 $("#citiessearch").on("click", handleCityInput);
-
-$(".historybtn").on("click", useHistory);
