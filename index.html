@@ -16,108 +16,44 @@
 <body>
     <header class="site-header" id="top" role="banner">
         <div class="container-fluid">
-          <h1 class="logo" alt="Logo">
+        <h1 class="logo" alt="Logo">
             Live <span id="bold">Weather</span> Dashboard
-          </h1>
+        </h1>
         </div>
         <div>
             <h3 class="header-date" id="bold"></h3>
         </div>
-      </header>
+    </header>
     
-    <main class="row container">
+    <main class="row full-width">
         <!-- city selector sidebar and history field -->
         <section class="col-4 border-right border-3 border-light">
             <div class="col-3">
-                <form class="col-2" action="sumbit">
-                    <input type="text" placeholder="Alabama">
-                    <button>Search Cities</button>
-                </form>
+                <div class="col-2">
+                    <input type="text" placeholder="Enter City">
+                    <button id="citiessearch">Search Cities</button>
+                </div>
             </div>
             
-            <div class="col-3" id="cityHistory"></div>
+            <div class="col-3" id="cityHistoryBox">
+                <ul id="cityHistory"></ul>
+            </div>
 
         <!-- weather status, current, 5-day forecast cards -->
-        </section class="container-fluid col-8">
+        </section class="col-7">
             <!-- Current weather card -->
-            <div class="row border-bottom border-3 border-light" id="currentWeather"></div>
+            <div class="">
+                <ul id="currentWeather">
+                    <li style="font-weight:bold;" id="cityname"></li>
+                    <li id="todayIcon"></li>
+                    <li id="todayTemp"></li>
+                    <li id="todayWind"></li>
+                    <li id="todayHumid"></li>
+                    <li id="todayUV"></li>
+                </ul>
+            </div>
             <!-- 5-day forcast cards -->
-            <div class="container" id="5day">
-
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                        <div class="col-md-4 rounded-start border-right border-1 border-info">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 data-date="1" class="card-date"></h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                                    content. This content is a little bit longer.</p>
-                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                        <div class="col-md-4 rounded-start border-right border-1 border-info">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 data-date="2" class="card-date"></h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                                    content. This content is a little bit longer.</p>
-                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                        <div class="col-md-4 rounded-start border-right border-1 border-info">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 data-date="3" class="card-date"></h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                                    content. This content is a little bit longer.</p>
-                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                        <div class="col-md-4 rounded-start border-right border-1 border-info">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 data-date="4" class="card-date"></h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                                    content. This content is a little bit longer.</p>
-                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                        <div class="col-md-4 rounded-start border-right border-1 border-info">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 data-date="5" class="card-date"></h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                                    content. This content is a little bit longer.</p>
-                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="" id="5day">
 
             </div>
             
