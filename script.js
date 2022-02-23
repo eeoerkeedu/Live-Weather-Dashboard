@@ -5,6 +5,7 @@ var cityLat = 0;
 var cityLon = 0;
 var cityName = document.getElementById("cityname");
 var todayIcon = $("#todayIcon");
+var icons = $(".icon");
 var todayTemp = document.getElementById("todayTemp");
 var todayWind = document.getElementById("todayWind");
 var todayHumid = document.getElementById("todayHumid");
@@ -13,7 +14,11 @@ var currentWeather = $("#currentWeather");
 var todayDate = moment();
 var iconData = 0;
 
+var fiveDay = [1, 2, 3, 4, 5];
+
 function citySearchApply() {
+  icons.removeClass("hidden");
+
   fetch(
     "http://api.openweathermap.org/geo/1.0/direct?q=" +
       cityInput +
@@ -46,17 +51,14 @@ function citySearchApply() {
           return response.json();
         })
         .then(function (data) {
-          console.log(data);
           var iconData = data["current"].weather[0].icon;
-          var iconGen = (src =
-            "http://openweathermap.org/img/w/" + iconData + ".png");
-          var iconFind = todayIcon.children[0];
+          var iconGen = "http://openweathermap.org/img/w/" + iconData + ".png";
           var tempToday = data["current"].temp;
           var windToday = data["current"].wind_speed;
           var humidToday = data["current"].humidity;
           var uvToday = data["current"].uvi;
 
-          iconFind.attr("src", iconGen);
+          todayIcon.attr("src", iconGen);
           todayTemp.textContent = "Tempurature: " + tempToday + "  degrees F";
           todayWind.textContent = "Wind Speed: " + windToday + "  mph";
           todayHumid.textContent = "Humidity: " + humidToday + "  %";
@@ -75,6 +77,13 @@ function citySearchApply() {
 
 function generateDates() {
   $(headerDate).text(todayDate.format("MMMM Do, YYYY"));
+
+  fiveDay.forEach(function (setDates) {
+    var dayId = setDates;
+    var futureDate = moment().add(setDates, "days").format("MM-DD-YY");
+
+    document.getElementById("date" + setDates).textContent = futureDate;
+  });
 }
 
 generateDates();

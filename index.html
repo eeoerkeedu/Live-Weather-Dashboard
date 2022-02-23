@@ -25,7 +25,7 @@
         </div>
     </header>
     
-    <main class="row full-width">
+    <main class="row">
         <!-- city selector sidebar and history field -->
         <section class="col-4 border-right border-3 border-light">
             <div class="col-3">
@@ -40,12 +40,12 @@
             </div>
 
         <!-- weather status, current, 5-day forecast cards -->
-        </section class="col-7">
+        </section class="">
             <!-- Current weather card -->
-            <div class="">
+            <div class="col-7">
                 <ul id="currentWeather">
                     <li style="font-weight:bold;" id="cityname"></li>
-                    <li id="todayIcon"></li>
+                    <li><img class="icon" id="todayIcon" alt="Todays Weather Icon"></li>
                     <li id="todayTemp"></li>
                     <li id="todayWind"></li>
                     <li id="todayHumid"></li>
@@ -53,9 +53,58 @@
                 </ul>
             </div>
             <!-- 5-day forcast cards -->
-            <div class="" id="5day">
-
+        <section class="row justify-content-around my-2 border-top border-light p-3" id="5day">
+            <div class="col-8 col-lg-2 mb-3 p-1">
+                <ul id="1" class="card fivedaycard">
+                    <li style="font-weight:bold;" id="date1"></li>
+                    <li><img class="icon" id="1Icon" alt="Future Weather Icon"></li>
+                    <li id="1Temp"></li>
+                    <li id="1Wind"></li>
+                    <li id="1Humid"></li>
+                </ul>
             </div>
+            
+            <div class="col-8 col-lg-2 mb-3 p-1">
+                <ul id="2" class="card fivedaycard">
+                    <li style="font-weight:bold;" id="date2"></li>
+                    <li><img class="icon" id="2Icon" alt="Future Weather Icon"></li>
+                    <li id="2Temp"></li>
+                    <li id="2Wind"></li>
+                    <li id="2Humid"></li>
+                </ul>
+            </div>
+
+            <div class="col-8 col-lg-2 mb-3 p-1">
+                <ul id="3" class="card fivedaycard">
+                    <li style="font-weight:bold;" id="date3"></li>
+                    <li><img class="icon" id="3Icon" alt="Future Weather Icon"></li>
+                    <li id="3Temp"></li>
+                    <li id="3Wind"></li>
+                    <li id="3Humid"></li>
+                </ul>
+            </div>
+            
+            <div class="col-8 col-lg-2 mb-3 p-1">
+                <ul id="4" class="card fivedaycard">
+                    <li style="font-weight:bold;" id="date4"></li>
+                    <li><img class="icon" id="4Icon" alt="Future Weather Icon"></li>
+                    <li id="4Temp"></li>
+                    <li id="4Wind"></li>
+                    <li id="4Humid"></li>
+                </ul>
+            </div>
+
+            <div class="col-8 col-lg-2 mb-3 p-1">
+                <ul id="5" class="card fivedaycard">
+                    <li style="font-weight:bold;" id="date5"></li>
+                    <li><img class="icon" id="5Icon" alt="Future Weather Icon"></li>
+                    <li id="5Temp"></li>
+                    <li id="5Wind"></li>
+                    <li id="5Humid"></li>
+                </ul>
+            </div>
+
+        </section>
             
         <section>
 

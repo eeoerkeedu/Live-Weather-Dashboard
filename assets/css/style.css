@@ -55,3 +55,8 @@ main {
   padding: 2%;
   margin: 1%;
 }
+
+.fivedaycard {
+  background-color: aliceblue;
+  list-style: none;
+}
