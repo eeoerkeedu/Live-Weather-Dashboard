@@ -17,7 +17,7 @@ var iconData = 0;
 var fiveDay = [1, 2, 3, 4, 5];
 
 function citySearchApply() {
-  icons.removeClass("hidden");
+  icons.removeClass("d-none");
 
   fetch(
     "http://api.openweathermap.org/geo/1.0/direct?q=" +
